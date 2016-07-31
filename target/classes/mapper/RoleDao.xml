@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.cw.dao.RoleDao" >
+	<select id="findList" resultType="Role">
+	SELECT  r.id, r.rolename,r.createtime,r.roledesc FROM role r WHERE 1=1
+	</select>
+	 <insert id="save" parameterType="Role" useGeneratedKeys="true" keyProperty="id">
+	INSERT INTO role(rolename,roledesc ,createtime)VALUES(#{rolename},#{roledesc},#{createtime})
+	
+	</insert>
+	<delete id="delete" >
+    	DELETE FROM role WHERE id = #{id} 
+    </delete>
+    <select id="findRoleById" resultType="Role">
+   	SELECT r.id,r.rolename,r.createtime,r.roledesc FROM role r WHERE id=#{id}
+    </select>
+    <update id="update">
+    update role set rolename = #{rolename},roledesc=#{roledesc} where id=#{id}
+    </update> 
+<!--     , createtime=#{createtime},roledesc=#{roledesc} -->
+    
+    <!-- 根据purviewId新增 -->
+    <insert id="saveRoleandPurview">
+	INSERT INTO role_purview (rid,pid)VALUES(#{rid},#{pid})
+	
+	</insert>
+	<!-- 根据roleId和purviewId删除 -->
+	<delete id="deletePurviewByRoleId" >
+    	DELETE FROM role_purview WHERE rid = #{rid} 
+    	
+    </delete>
+	<select id="findRolePurviewList" resultType="Integer">
+	SELECT rp.pid FROM role_purview rp WHERE rid=#{rid}
+	</select>
+	</mapper>

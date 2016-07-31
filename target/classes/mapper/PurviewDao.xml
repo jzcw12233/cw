@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.cw.dao.PurviewDao" >
+	<select id="findList" resultType="purview">
+	SELECT p.id,p.pid,p.url,p.purviewname,p.purviewpicture FROM purview p WHERE 1=1
+	</select>
+	 
+	<insert id="save" >
+      INSERT INTO purview (pid,url,purviewname,purviewpicture) VALUES (#{pid},#{url},#{purviewname},#{purviewpicture}) 
+    </insert>
+    
+    <delete id="delete" >
+    	DELETE FROM purview WHERE id = #{id} 
+    </delete>
+    <select id="findpurviewById" resultType="purview">
+   	SELECT p.id,p.pid,p.url,p.purviewname,p.purviewpicture FROM purview p WHERE id=#{id}
+    </select>
+    <update id="update">
+    update purview set pid=#{pid},url=#{url},purviewname=#{purviewname},purviewpicture=#{purviewpicture} where id=#{id}
+    </update> 
+</mapper>
