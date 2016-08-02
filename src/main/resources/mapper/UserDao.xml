@@ -14,6 +14,9 @@
     <select id="findUserById" resultType="User">
    	SELECT u.id,u.role_id,u.sex,u.path,u.username,u.`password`,u.phone FROM users u WHERE id=#{id}
     </select>
+    <select id="login" resultType="java.lang.Integer">
+   	select count(1) count from users u where u.username =#{username} and u.`password` =#{password}
+    </select>
     <update id="update">
     update users set role_id=#{roleId},sex = #{sex},path = #{path}, username=#{username},password=#{password},phone=#{phone} where id=#{id}
     </update>

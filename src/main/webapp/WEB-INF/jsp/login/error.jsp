@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+登录错误:ID号: ${user.userId},密码: ${user.userPassword},<font color='red'>${msg}</font><br>  
+<a href="${pageContext.request.contextPath}/login/index.jsp">返回</a>
 </body>
 </html>

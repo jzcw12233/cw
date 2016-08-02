@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpRequest;
@@ -29,7 +30,6 @@ public class UserController {
     private  static final String pwd="123456";
     @Resource
     private RoleService roleService;
-
     @Resource
     private UserService userService;
 
@@ -51,6 +51,20 @@ public class UserController {
             userService.save(user);
         }
         return "redirect:/user/list ";
+    }
+    @RequestMapping("/login")
+    public String login(User user,HttpServletRequest request) {
+        user.setPassword(getmd5(user.getPassword()));
+        Integer b=userService.login(user);
+        if(b!=null&&b>0){
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            
+            return "redirect:/main.jsp";
+        }else{
+           
+            return "redirect:login.jsp";
+        }
     }
 
     /*

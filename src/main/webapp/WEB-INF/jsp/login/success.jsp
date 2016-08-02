@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+欢迎你: ${user.userId}<br>  
+ <a href="${pageContext.request.contextPath}/login/index.jsp">返回</a>
 </body>
 </html>

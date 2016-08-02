@@ -11,5 +11,6 @@ public interface UserDao {
   void delete(int id);
   User findUserById(int id);
   void update(User user);
+Integer login(User user);
   
 }

@@ -14,12 +14,9 @@
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	<!-- 插入拦截器 -->
-<!-- 	 <mvc:interceptors> -->
-<!--         <mvc:interceptor> -->
-<!--             <mvc:mapping path="/**"/> -->
-<!--             <bean id="loginInterceptor" class="net.xiucheren.web.interceptor.LoginInterceptor"/> -->
-<!--         </mvc:interceptor> -->
-<!--     </mvc:interceptors> -->
 	<context:component-scan base-package="org.cw.web"/> 
+	<mvc:interceptors>  
+    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->  
+    <bean class="org.cw.web.AllInterceptor"/>  
+</mvc:interceptors> 
 </beans>

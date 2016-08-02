@@ -17,6 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findList() {
         List<User> list = userDao.findList();
+        
         return list;
     }
     
@@ -32,7 +33,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserById(int id) {
-        
         return userDao.findUserById(id);
     }
 
@@ -41,6 +41,12 @@ public class UserServiceImpl implements UserService {
         userDao.update(user);
         
     }
+
+    @Override
+    public Integer login(User user) {
+        return  userDao.login(user);
+    }
+
 
 
     
